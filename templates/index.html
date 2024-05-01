@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RNA Backpropagation</title>
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
-    
+    <div class="contenedor">
+        <h1>Entrenamiento de RNA Multicapa con Algoritmo Backpropagation</h1>
+        <div class="seccion-informacion">
+            <h2>Descripción</h2>
+            <p>Esta página web permite visualizar el proceso de entrenamiento de una red neuronal artificial (RNA) utilizando el algoritmo de retropropagación (Backpropagation).</p>
+            
+            <p>Aquí podrás observar cómo la red aprende a partir de datos de entrada y ajusta sus parámetros para obtener una salida precisa.</p>
+        </div>
+        
+        <div class="seccion-visualizacion">
+            <h2>Visualización</h2>
+            <div class="seccion-informacion">
+                <p>Suba el archivo que contiene los parametros de entrada para mostrar el modelo de la Red Neuronal. Debe ser un archivo .json</p>
+            </div>
+
+            <!-- Modificar el botón y agregar un contenedor para mostrar los parámetros -->
+            <div class="grupo-carga-parametros">
+                <input type="file" id="archivoJSON" name="archivo" style="display: none;">
+                <label for="archivoJSON" id="btnCargarParametros">Cargar Parametros de entrada</label>
+                <a id="removerArchivo" href="#">Eliminar archivo</a>
+                <p id="nombreArchivo" style="display: none;"></p>
+            </div>
+
+            <div id="contenedorModeloRed" class="contenedor-modelo-red">
+                <h2>Modelo de la Red Neuronal</h2>
+                <p id="parametrosRed"></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/scripts/script.js"></script>
 </body>
 </html>
