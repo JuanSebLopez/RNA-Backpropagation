@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RNA Backpropagation</title>
     <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/model.css">
 </head>
 <body>
     <div class="contenedor">
@@ -24,19 +25,17 @@
 
             <!-- Modificar el botón y agregar un contenedor para mostrar los parámetros -->
             <div class="grupo-carga-parametros">
-                <input type="file" id="archivoJSON" name="archivo" style="display: none;">
+                <input type="file" id="archivoJSON" name="file" style="display: none;" accept="application/json">
                 <label for="archivoJSON" id="btnCargarParametros">Cargar Parametros de entrada</label>
+                <button type="submit" id="submitBtn" style="display: none;">Subir Archivo</button>
                 <a id="removerArchivo" href="#">Eliminar archivo</a>
-                <p id="nombreArchivo" style="display: none;"></p>
+                <!--<a id="nombreArchivo" style="display: none;"></a>-->
             </div>
 
-            <div id="contenedorModeloRed" class="contenedor-modelo-red">
-                <h2>Modelo de la Red Neuronal</h2>
-                <p id="parametrosRed"></p>
-            </div>
+            <div id="contenedorModeloRed" class="contenedor-modelo-red"></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/static/scripts/script.js"></script>
+    <script src="/static/scripts/main.js" type="module"></script>
 </body>
 </html>

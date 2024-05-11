@@ -10,24 +10,22 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    print("Recibiendo solicitud POST en /upload")
-    if 'archivo' not in request.files:
-        print('archivo')
+    if 'file' not in request.files:
         return 'No file part'
-    
-    print("r1")
-    file = request.files['archivo']
-    print("r2")
 
-    entradas, salidas, error = procesar_json(file)
-    print("r3")
+    file = request.files['file']
+
+    entradas, salidas, columnas, error = procesar_json(file)
 
     if error:
-        print("r4")
         return error
     else:
-        print("r5")
-        return jsonify({"message": "Archivo recibido correctamente"})
+        return jsonify({
+            "message": "Archivo recibido correctamente",
+            "entradas": entradas,
+            "salidas": salidas,
+            "columnas": columnas
+        })
 
 if __name__ == '__main__':
     app.run(debug=True)

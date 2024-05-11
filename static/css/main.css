@@ -7,7 +7,7 @@ body {
 }
 
 .contenedor {
-    max-width: 900px; /* Aumentado el ancho máximo */
+    max-width: 1200px; /* Aumentado el ancho máximo */
     margin: 50px auto;
     padding: 20px;
     background-color: #333;
@@ -26,6 +26,11 @@ h1 {
 
 h2 {
     color: #007bff; /* Azul más claro */
+    margin-bottom: 10px;
+}
+
+h3 {
+    color:#4CAF50;
     margin-bottom: 10px;
 }
 
@@ -96,13 +101,45 @@ button:hover {
 }
 
 #contenedorModeloRed {
-    background-color: #444;
+    background-color: #4f4f4f;
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 20px;
 }
 
-#parametrosRed {
+.parametrosRed {
     color: #fff;
     margin-bottom: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.parametros-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.parametros-container p {
+    margin: 0 10px;
+}
+
+.banco_datos-style {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.banco_datos-style th, .banco_datos-style td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.banco_datos-style th {
+    background-color: #f2f2f2;
+}
+
+#contenedorModeloRed table {
+    width: 100%;
+    max-width: 100%;
 }

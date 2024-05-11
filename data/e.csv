@@ -1,0 +1,10 @@
+índice,cuantia,vivienda,trabajo,credito
+E1,baja,propiedad,si,concedido
+E2,baja,propiedad,no,concedido
+E3,baja,alquiler,si,concedido
+E4,media,alquiler,si,concedido
+E5,media,propiedad,si,concedido
+E6,media,alquiler,no,concedido
+E7,alta,propiedad,no,denegado
+E8,alta,propiedad,si,denegado
+E9,alta,alquiler,si,denegado

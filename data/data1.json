@@ -1,0 +1,17 @@
+{
+  "entradas": {
+    "Cuantia - Alta": [0, 0, 0, 0, 0, 0, 1, 1, 1],
+    "Cuantia - Baja": [0, 0, 0, 1, 1, 1, 0, 0, 0],
+    "Cuantia - Media": [1, 1, 1, 0, 0, 0, 0, 0, 0],
+    "Vivienda - Alquiler": [0, 0, 1, 1, 0, 0, 0, 0, 1],
+    "Vivienda - Propiedad": [1, 1, 0, 0, 1, 1, 1, 1, 0],
+    "Trabajo - Si": [1, 0, 1, 1, 1, 0, 0, 1, 1],
+    "Trabajo - No": [0, 1, 0, 0, 0, 1, 1, 0, 0]
+  },
+  "salidas": {
+    "Credito - Concedido": [1, 0, 1, 1, 1, 0, 0, 1, 0],
+    "Credito - Denegado": [0, 1, 0, 0, 0, 1, 1, 0, 1]
+  },
+  "pesos": {},
+  "umbrales": {}
+}
