@@ -1,0 +1,18 @@
+{
+    "entradas": {
+      "Edad - Joven": [1, 1, 1, 1, 0, 0, 0, 0, 0],
+      "Edad - Pre-presbicia": [0, 0, 0, 0, 1, 1, 1, 0, 0],
+      "Edad - Presbicia": [0, 0, 0, 0, 0, 0, 0, 1, 1],
+      "Anomalia - Miopia": [1, 1, 0, 0, 1, 1, 0, 1, 0],
+      "Anomalia - Hipermetropia": [0, 0, 1, 1, 0, 0, 1, 0, 1],
+      "Astigmatismo - Si": [0, 1, 0, 1, 0, 1, 0, 1, 0],
+      "Astigmatismo - No": [1, 0, 1, 0, 1, 0, 1, 0, 1]
+    },
+    "salidas": {
+      "Lentes de Contacto - Blandas": [1, 1, 1, 0, 1, 0, 1, 0, 1],
+      "Lentes de Contacto - Duras": [0, 0, 0, 1, 0, 1, 0, 1, 0]
+    },
+    "pesos": {},
+    "umbrales": {}
+  }
+  
