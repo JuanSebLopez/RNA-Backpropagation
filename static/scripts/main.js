@@ -29,7 +29,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
             // Red Neuronal
             contenedorModeloRed.appendChild(mostrarTabla(banco_datos, columnas)); // Append table to container
             contenedorModeloRed.appendChild(model.mostrarParametros(banco_datos));
-            contenedorModeloRed.appendChild(model.configurarCapas(1 ));
+            contenedorModeloRed.appendChild(model.configurarCapas());
             //document.getElementById('nombreArchivo').textContent = `Archivo cargado: ${archivo.name}`;
         })
         .catch(function(error) {

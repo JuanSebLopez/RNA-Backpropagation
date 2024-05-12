@@ -1,0 +1,9 @@
+.container-sliderNeuronas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-sliderNeuronas input {
+    margin: 0 10px;
+}
