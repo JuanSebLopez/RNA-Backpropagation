@@ -1,4 +1,5 @@
-import model from './config.js';
+import config from './config.js';
+import model from './model.js';
 
 document.getElementById('archivoJSON').addEventListener('change', function(event) {
     var submitBtn = document.getElementById('submitBtn');
@@ -29,11 +30,14 @@ document.getElementById('submitBtn').addEventListener('click', function() {
 
             // Configuracion Red Neuronal
             contenedorModeloRed.appendChild(mostrarTabla(banco_datos, columnas)); // Append table to container
-            contenedorModeloRed.appendChild(model.mostrarParametros(banco_datos));
-            contenedorModeloRed.appendChild(model.configurarCapas());
+            contenedorModeloRed.appendChild(config.mostrarParametros(banco_datos));
+            contenedorModeloRed.appendChild(config.configurarCapas());
             
             // Boton de Modelar
             crearBtn(contenedorModeloRed);
+
+            // Generar Modelo
+            model.generarModelo(banco_datos);
         })
         .catch(function(error) {
             console.error('Error al cargar el archivo:', error);
@@ -82,6 +86,7 @@ function crearTitulo(contenedorModeloRed){
 function crearBtn (contenedorModeloRed){
     var btnSection = document.createElement('div');
     btnSection.classList.add('btnSection');
+    btnSection.id = 'generateButton';
 
     var generarModeloBtn = document.createElement('button');
     generarModeloBtn.textContent = 'Generar Modelo RNA';
@@ -94,6 +99,7 @@ function crearBtn (contenedorModeloRed){
 
     var cambiarArchivoBtn = document.createElement('button');
     cambiarArchivoBtn.textContent = 'Cambiar Archivo';
+    cambiarArchivoBtn.id = 'btn-reset';
     // Event
     btnSection.appendChild(cambiarArchivoBtn);
 

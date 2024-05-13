@@ -26,6 +26,14 @@ def upload():
             "salidas": salidas,
             "columnas": columnas
         })
+    
+@app.route('/generate-model', methods=['POST'])
+def generate_model():
+    print("hola")
+    # Lógica para generar el modelo de red neuronal
+    return jsonify({
+        "message": "holi"
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)

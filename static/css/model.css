@@ -11,10 +11,74 @@
     margin-bottom: 40px;
 }
 
-.training-param {
-
+.container-selectboxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
+.selectbox {
+    margin-bottom: 5px;
+}
+.selectbox label {
+    display: block;
+    margin-bottom: 5px;
+}
+.selectbox select {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #663300; /* Dark mahogany border */
+    border-radius: 5px;
+    background-color: #6d4423; /* Dark mahogany background */
+    color: #fff; /* White text */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
+.selectbox select::-ms-expand {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+.selectbox select::-ms-value {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: #333;
+}
+.selectbox select:focus {
+    outline: none;
+    border-color: #999;
+}
+
+.activation-function-select {
+    /* General appearance */
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #007bff; /* Dark mahogany border */
+    border-radius: 5px;
+    background-color: #1069c7; /* Dark mahogany background */
+    color: #fff; /* White text */
+    font-family: sans-serif; /* Choose a non-modern sans-serif font */
+}
+.activation-function-select:hover {
+    background-color: #0558b1; /* Slightly darker mahogany on hover */
+}
+.activation-function-select:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px #0d80fc; /* Dark mahogany inner shadow */
+}
+.activation-function-select:disabled {
+    opacity: 0.5; /* Reduced opacity for disabled elements */
+    cursor: not-allowed; /* Indicate disabled state */
+}
+.activation-function-select option {
+    background-color: #1069c7; /* Dark mahogany background */
+    color: #000000; /* White text */
+    padding: 5px;
+    cursor: pointer;
+}
 .info {
     text-align: center;
     color: #fff;
@@ -120,32 +184,4 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-}
-
-.activation-function-select {
-    /* General appearance */
-    display: inline-block;
-    padding: 5px 10px;
-    border: 1px solid #663300; /* Dark mahogany border */
-    border-radius: 5px;
-    background-color: #6d4423; /* Dark mahogany background */
-    color: #fff; /* White text */
-    font-family: sans-serif; /* Choose a non-modern sans-serif font */
-}
-.activation-function-select:hover {
-    background-color: #805029; /* Slightly darker mahogany on hover */
-}
-.activation-function-select:focus {
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px #805029; /* Dark mahogany inner shadow */
-}
-.activation-function-select:disabled {
-    opacity: 0.5; /* Reduced opacity for disabled elements */
-    cursor: not-allowed; /* Indicate disabled state */
-}
-.activation-function-select option {
-    background-color: #6d4423; /* Dark mahogany background */
-    color: #fff; /* White text */
-    padding: 5px;
-    cursor: pointer;
 }

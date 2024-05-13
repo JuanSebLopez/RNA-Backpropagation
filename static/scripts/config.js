@@ -151,7 +151,7 @@ const model = {
             selectActivationFunction.classList.add('activation-function-select');
             containerSliderNeurona.appendChild(selectActivationFunction);
 
-            // Options
+            // Options Funcion de Activacion Capas
             var activationFunctions = ['Sigmoide', 'Seno', 'Tangente Hiperbólica', 'Gaussiana'];
             activationFunctions.forEach(function(functionName){
                 var optionElement = document.createElement('option');
@@ -166,11 +166,6 @@ const model = {
             sliderNeuronasContainer.appendChild(containerSliderNeurona);
             slider.push(containerSliderNeurona);
         }
-
-        var containerAdicional = document.createElement('div');
-        containerAdicional.classList.add = 'training-param';
-        containerConfigRed.appendChild(containerAdicional);
-
 
         
         // Eventos Slider Principal
@@ -198,7 +193,61 @@ const model = {
                 valorSlider.style.left = bulletPosition + "px";
             });
         });
+        
         containerConfigRed.appendChild(sliderNeuronasContainer);
+
+        // Config Adicionales
+        var containerAdicional = document.createElement('div');
+        containerAdicional.classList.add('container-selectboxes');
+        containerConfigRed.appendChild(containerAdicional);
+
+        // Select container
+        var selectBox1 = document.createElement('div');
+        var selectBox2 = document.createElement('div');
+        selectBox1.classList.add('selectbox');
+        selectBox2.classList.add('selectbox');
+        containerAdicional.appendChild(selectBox1);
+        containerAdicional.appendChild(selectBox2);
+
+        // Label
+        var labelSalidaFA = document.createElement('label');
+        var labelAlgoritmo = document.createElement('label');
+        labelSalidaFA.textContent = 'Seleccione la Funcion de Activacion para la Capa de Salida';
+        labelAlgoritmo.textContent = 'Seleccione el Algoritmo de Entrenamiento';
+        selectBox1.appendChild(labelSalidaFA);
+        selectBox2.appendChild(labelAlgoritmo);
+
+        // SelectBoxes
+        var selectSalidaFA = document.createElement('select');
+        var selectAlgoritmo = document.createElement('select');
+        selectSalidaFA.id = 'selectbox-salidaFA';
+        selectAlgoritmo.id = 'selectbox-algoritmo';
+        selectBox1.appendChild(selectSalidaFA);
+        selectBox2.appendChild(selectAlgoritmo);
+
+        labelSalidaFA.setAttribute('for', selectSalidaFA.id);
+        labelAlgoritmo.setAttribute('for', selectAlgoritmo.id);
+
+        // Options Salida
+        var optionSalidaFA = ['Sigmoide', 'Seno', 'Tangente Hiperbólica', 'Gaussiana', 'Lineal'];
+        optionSalidaFA.forEach(function(functionName){
+            var optionElement = document.createElement('option');
+            optionElement.value = functionName;
+            optionElement.textContent = functionName;
+            selectSalidaFA.appendChild(optionElement);
+        });
+
+        // Options Algoritmo
+        var optionAlgoritmo = ['Backpropagation', 'Backpropagation Cascade']
+        optionAlgoritmo.forEach(function(functionName){
+            var optionElement = document.createElement('option');
+            optionElement.value = functionName;
+            optionElement.textContent = functionName;
+            selectAlgoritmo.appendChild(optionElement);
+        });
+
+        containerConfigRed.appendChild(containerAdicional);
+
         return containerConfigRed;
     },
 }
