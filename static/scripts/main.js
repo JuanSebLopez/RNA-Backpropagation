@@ -1,7 +1,6 @@
 import model from './model.js';
 
 document.getElementById('archivoJSON').addEventListener('change', function(event) {
-    var archivo = event.target.files[0];
     var submitBtn = document.getElementById('submitBtn');
     submitBtn.style.display = 'block';
 });
@@ -20,12 +19,14 @@ document.getElementById('submitBtn').addEventListener('click', function() {
                 "entradas": parametros.entradas,
                 "salidas": parametros.salidas
             }
+
             // Clear previous content
             var contenedorModeloRed = document.getElementById('contenedorModeloRed');
-            document.querySelector('.grupo-carga-parametros').innerHTML = '';
-            contenedorModeloRed.innerHTML = ''; 
+            document.querySelector('.grupo-carga-parametros').innerHTML = ''; 
+           
             // Generar titulo 
             crearTitulo(contenedorModeloRed);
+
             // Red Neuronal
             contenedorModeloRed.appendChild(mostrarTabla(banco_datos, columnas)); // Append table to container
             contenedorModeloRed.appendChild(model.mostrarParametros(banco_datos));

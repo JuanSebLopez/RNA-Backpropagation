@@ -98,20 +98,61 @@ const model = {
 
         var slider = [];
         for(var i = 1; i <= 3; i++ ) {
-            var sliderNeurona = document.createElement('input');
-            sliderNeurona.type = 'range';
-            sliderNeurona.min = 1;
-            sliderNeurona.max = 50;
-            sliderNeurona.value = 1;
-            sliderNeurona.id = `sliderNeurona${i}`;
-            if (i >= 2){
-                sliderNeurona.style.display = 'none';
-            }
-            sliderNeuronasContainer.appendChild(sliderNeurona);
-            slider.push(sliderNeurona);
-        }
+            // Contenedor de cada slider
+            var containerSliderNeurona = document.createElement('div');
+            containerSliderNeurona.classList.add('containerSlider');
+            containerSliderNeurona.style.marginLeft = 10 + "px";
+            containerSliderNeurona.style.marginRight = 10 + "px";
 
-        // Eventos
+            // Numero de Capa
+            var numeroCapa = document.createElement('h3');
+            numeroCapa.textContent = `Capa ${i}`
+            containerSliderNeurona.appendChild(numeroCapa);
+
+            // Div range-slider
+            var rangeSliderDiv = document.createElement('div');
+            rangeSliderDiv.classList.add('range-slider');
+            containerSliderNeurona.appendChild(rangeSliderDiv);
+
+            // Span rs-label
+            var rsLabelSpan = document.createElement('span');
+            rsLabelSpan.textContent = "1";
+            rsLabelSpan.classList.add('rs-label');
+            rsLabelSpan.id = `rs-bullet-${i}`
+            rangeSliderDiv.appendChild(rsLabelSpan);
+
+            // Input type range
+            var inputRange = document.createElement('input');
+            inputRange.type = 'range';
+            inputRange.min = 1;
+            inputRange.max = 50;
+            inputRange.value = 1;
+            inputRange.id = `sliderNeurona${i}`;
+            inputRange.classList.add('rs-range');
+            rangeSliderDiv.appendChild(inputRange);
+
+            // Div box-minmax
+            var boxMinMaxDiv = document.createElement('div');
+            boxMinMaxDiv.classList.add('box-minmax');
+            containerSliderNeurona.appendChild(boxMinMaxDiv);
+
+            // Span para el rango mínimo
+            var minSpan = document.createElement('span');
+            minSpan.textContent = "1";
+            boxMinMaxDiv.appendChild(minSpan);
+
+            // Span para el rango máximo
+            var maxSpan = document.createElement('span');
+            maxSpan.textContent = "50";
+            boxMinMaxDiv.appendChild(maxSpan);
+            if (i >= 2) {
+                containerSliderNeurona.style.display = 'none';
+            }
+            sliderNeuronasContainer.appendChild(containerSliderNeurona);
+            slider.push(containerSliderNeurona);
+        }
+        
+        // Eventos Slider Principal
         sliderCapas.addEventListener('input', showSliderValue, false);
         function showSliderValue(){
             valorSlider.innerHTML = sliderCapas.value;
@@ -126,9 +167,17 @@ const model = {
             }         
         });
 
-        // Agregar elementos al contenedor principal
+        // Evento Sliders Dinamicos
+        slider.forEach((sliderElement) => {
+            const inputRange = sliderElement.querySelector("input[type='range']");
+            const valorSlider = sliderElement.querySelector("span[class='rs-label']");
+            inputRange.addEventListener('input', function(){
+                valorSlider.innerHTML = inputRange.value;
+                var bulletPosition = ((inputRange.value - inputRange.min) / (inputRange.max - inputRange.min) * (326 - (inputRange.max - inputRange.min)));
+                valorSlider.style.left = bulletPosition + "px";
+            });
+        });
         containerConfigRed.appendChild(sliderNeuronasContainer);
-
         return containerConfigRed;
     },
 }
