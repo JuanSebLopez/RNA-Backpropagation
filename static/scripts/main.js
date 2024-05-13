@@ -1,4 +1,4 @@
-import model from './model.js';
+import model from './config.js';
 
 document.getElementById('archivoJSON').addEventListener('change', function(event) {
     var submitBtn = document.getElementById('submitBtn');
@@ -12,7 +12,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
 
     axios.post('/upload', formData)
         .then(function(response) {
-            // Datos para generar la
+            // Datos para generar la Red Neuronal
             var parametros = response.data;
             var columnas = parametros.columnas;
             var banco_datos = {
@@ -27,11 +27,13 @@ document.getElementById('submitBtn').addEventListener('click', function() {
             // Generar titulo 
             crearTitulo(contenedorModeloRed);
 
-            // Red Neuronal
+            // Configuracion Red Neuronal
             contenedorModeloRed.appendChild(mostrarTabla(banco_datos, columnas)); // Append table to container
             contenedorModeloRed.appendChild(model.mostrarParametros(banco_datos));
             contenedorModeloRed.appendChild(model.configurarCapas());
-            //document.getElementById('nombreArchivo').textContent = `Archivo cargado: ${archivo.name}`;
+            
+            // Boton de Modelar
+            crearBtn(contenedorModeloRed);
         })
         .catch(function(error) {
             console.error('Error al cargar el archivo:', error);
@@ -42,14 +44,17 @@ function mostrarTabla(banco_datos, columnas) {
     // Se crea la tabla y se añade los estilos ya definidos
     var tabla = document.createElement('table');
     tabla.classList.add('banco_datos-style');
+
     // Crea el encabezado de la tabla
     var encabezado = tabla.createTHead().insertRow();
     for (var i = 0; i < columnas.length; i++) {
         var celdaEncabezado = encabezado.insertCell();
         celdaEncabezado.textContent = columnas[i];
     }
+
     // Concatena las entradas y salidas en una sola matriz para facilitar el proceso de generar la tabla
     var datosCombinados = banco_datos.entradas.concat(banco_datos.salidas);
+
     // Crea el cuerpo de la tabla y llena las celdas con los datos
     var cuerpoTabla = tabla.createTBody();
     for(var i = 0; i < datosCombinados[0].length; i++){ // Itera sobre las filas
@@ -74,3 +79,23 @@ function crearTitulo(contenedorModeloRed){
     contenedorModeloRed.appendChild(subtituloBancoDatos);
 }
 
+function crearBtn (contenedorModeloRed){
+    var btnSection = document.createElement('div');
+    btnSection.classList.add('btnSection');
+
+    var generarModeloBtn = document.createElement('button');
+    generarModeloBtn.textContent = 'Generar Modelo RNA';
+    // event
+    btnSection.appendChild(generarModeloBtn);
+
+    var textEl = document.createElement('p');
+    textEl.textContent = 'O si prefieres...'
+    btnSection.appendChild(textEl);
+
+    var cambiarArchivoBtn = document.createElement('button');
+    cambiarArchivoBtn.textContent = 'Cambiar Archivo';
+    // Event
+    btnSection.appendChild(cambiarArchivoBtn);
+
+    contenedorModeloRed.appendChild(btnSection);
+}

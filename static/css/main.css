@@ -55,7 +55,7 @@ input[type="number"], input[type="text"] {
 
 button {
     padding: 10px 20px;
-    background-color: #007bff; /* Azul más claro */
+    background-color: #28a328; 
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -64,7 +64,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Azul más oscuro */
+    background-color: #259225;
 }
 
 #graficaRed {
@@ -82,7 +82,7 @@ button:hover {
 
 #btnCargarParametros {
     padding: 10px 20px;
-    background-color: #4CAF50; /* Verde */
+    background-color: #228B22; /* Verde */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -91,7 +91,7 @@ button:hover {
 }
 
 #btnCargarParametros:hover {
-    background-color: #45a049; /* Verde más oscuro */
+    background-color: #1c721c; /* Verde más oscuro */
 }
 
 #removerArchivo {
@@ -141,4 +141,10 @@ button:hover {
 #contenedorModeloRed table {
     width: 100%;
     max-width: 100%;
+}
+
+.btnSection {
+    align-items: center;
+    margin-bottom: 10px;
+    text-align: center;
 }
