@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, render_template, request
+from configuration import create_model, initialize_weights_thresholds
 from upload_utils import procesar_json
 
 app = Flask(__name__)
@@ -29,11 +30,28 @@ def upload():
     
 @app.route('/generate-model', methods=['POST'])
 def generate_model():
-    print("hola")
+    model_data = request.get_json()
+
     # Lógica para generar el modelo de red neuronal
+    graph = create_model(model_data);
+    
     return jsonify({
-        "message": "holi"
+        "message": "Modelo generado correctamente",
+        "graph": graph
     })
+
+@app.route('/generate-weights-thresholds', methods=['POST'])
+def generate_weight_thresholds():
+    model_data = request.get_json()
+
+    case, pesos_inicializados, umbrales_inicializados = initialize_weights_thresholds(model_data)
+
+    respuesta = {
+        'exito': case,
+        'pesos': pesos_inicializados,
+        'umbrales': umbrales_inicializados
+    }
+    return jsonify(respuesta)
 
 if __name__ == '__main__':
     app.run(debug=True)

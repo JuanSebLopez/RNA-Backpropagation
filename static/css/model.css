@@ -117,6 +117,7 @@
     margin-top: 15px;
     width: 300px;
     -webkit-appearance: none;
+    appearance: none;
 }
 .rs-range:focus {
     outline: none;
@@ -161,6 +162,7 @@
     background: rgb(255, 255, 255);
     cursor: pointer;
     -webkit-appearance: none;
+    appearance: none;
     margin-top: -20px;
 }
 .rs-range::-moz-focus-outer {
@@ -184,4 +186,21 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+}
+
+#model-container {
+    text-align: center;
+}
+#model-container p {
+    text-align: justify;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.img-container img {
+    width: 60%;
 }

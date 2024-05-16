@@ -37,6 +37,7 @@ const model = {
         // Contenedor Principal
         var containerConfigRed = document.createElement('div');
         containerConfigRed.classList.add('container-configRed');
+        containerConfigRed.id = 'configRed-container'
 
         // Subtitulo
         var divSubtitulo = document.createElement('div');
@@ -213,7 +214,7 @@ const model = {
         var labelSalidaFA = document.createElement('label');
         var labelAlgoritmo = document.createElement('label');
         labelSalidaFA.textContent = 'Seleccione la Funcion de Activacion para la Capa de Salida';
-        labelAlgoritmo.textContent = 'Seleccione el Algoritmo de Entrenamiento';
+        labelAlgoritmo.textContent = 'Seleccione el Algoritmo de Entrenamiento para la RNA';
         selectBox1.appendChild(labelSalidaFA);
         selectBox2.appendChild(labelAlgoritmo);
 

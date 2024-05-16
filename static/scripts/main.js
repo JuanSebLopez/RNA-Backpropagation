@@ -1,5 +1,6 @@
 import config from './config.js';
 import model from './model.js';
+import training  from './training.js';
 
 document.getElementById('archivoJSON').addEventListener('change', function(event) {
     var submitBtn = document.getElementById('submitBtn');
@@ -21,28 +22,41 @@ document.getElementById('submitBtn').addEventListener('click', function() {
                 "salidas": parametros.salidas
             }
 
-            // Clear previous content
-            var contenedorModeloRed = document.getElementById('contenedorModeloRed');
-            document.querySelector('.grupo-carga-parametros').innerHTML = ''; 
-           
-            // Generar titulo 
-            crearTitulo(contenedorModeloRed);
-
-            // Configuracion Red Neuronal
-            contenedorModeloRed.appendChild(mostrarTabla(banco_datos, columnas)); // Append table to container
-            contenedorModeloRed.appendChild(config.mostrarParametros(banco_datos));
-            contenedorModeloRed.appendChild(config.configurarCapas());
-            
-            // Boton de Modelar
-            crearBtn(contenedorModeloRed);
-
-            // Generar Modelo
-            model.generarModelo(banco_datos);
+            // Configurar Red Neuronal
+            configurarRedNeuronal(banco_datos, columnas);
         })
         .catch(function(error) {
             console.error('Error al cargar el archivo:', error);
         });
 });
+
+function configurarRedNeuronal(banco_datos, columnas){
+    // Clear previous content
+    var contenedorModeloRed = document.getElementById('contenedorModeloRed');
+    document.querySelector('.grupo-carga-parametros').innerHTML = ''; 
+
+    // Generar titulo 
+    crearTitulo(contenedorModeloRed);
+    
+    // Configuracion Red Neuronal
+    contenedorModeloRed.appendChild(mostrarTabla(banco_datos, columnas)); // Append table to container
+    contenedorModeloRed.appendChild(config.mostrarParametros(banco_datos));
+    contenedorModeloRed.appendChild(config.configurarCapas());
+    
+    // Modelo Red Neuronal
+    var [divModelo, divInicializar] = crearDivModelo();
+    contenedorModeloRed.appendChild(divModelo);
+    contenedorModeloRed.appendChild(divInicializar);
+
+    // Boton de Modelar
+    crearBtn(contenedorModeloRed);
+
+    // Generar Modelo
+    model.generarModelo(banco_datos);
+
+    // Inicializar Pesos y Umbrales
+    training.iniciarPesosUmbrales(banco_datos);
+}
 
 function mostrarTabla(banco_datos, columnas) {
     // Se crea la tabla y se añade los estilos ya definidos
@@ -73,7 +87,7 @@ function mostrarTabla(banco_datos, columnas) {
 
 function crearTitulo(contenedorModeloRed){
     var tituloModelo = document.createElement('h2');
-    tituloModelo.textContent = 'MODELO DE LA RED NEURONAL';
+    tituloModelo.textContent = 'CONFIGURACION DE LA RED NEURONAL';
     tituloModelo.style.textAlign = 'center';
     contenedorModeloRed.appendChild(tituloModelo)
 
@@ -90,18 +104,29 @@ function crearBtn (contenedorModeloRed){
 
     var generarModeloBtn = document.createElement('button');
     generarModeloBtn.textContent = 'Generar Modelo RNA';
-    // event
+    generarModeloBtn.id = 'generar-modelo-btn';
     btnSection.appendChild(generarModeloBtn);
-
-    var textEl = document.createElement('p');
-    textEl.textContent = 'O si prefieres...'
-    btnSection.appendChild(textEl);
 
     var cambiarArchivoBtn = document.createElement('button');
     cambiarArchivoBtn.textContent = 'Cambiar Archivo';
     cambiarArchivoBtn.id = 'btn-reset';
-    // Event
     btnSection.appendChild(cambiarArchivoBtn);
 
+    var btnPeUmb = document.createElement('button');
+    btnPeUmb.textContent = 'Generar Pesos y Umbrales';
+    btnPeUmb.id = 'btn-pesos-umbrales';
+    btnPeUmb.style.display = 'none';
+    btnSection.appendChild(btnPeUmb);
+
     contenedorModeloRed.appendChild(btnSection);
+}
+
+function crearDivModelo(){
+    var divModelo = document.createElement('div');
+    divModelo.id = 'model-container'
+
+    var divInicializar = document.createElement('div');
+    divInicializar.id = 'pesos-umbrales-container';
+
+    return [divModelo, divInicializar];
 }
