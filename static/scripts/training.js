@@ -25,15 +25,31 @@ const training = {
     },
 
     mostrarPesosUmbrales: function(pesos_inicializados, umbrales_inicializados){
-        console.log(pesos_inicializados)
         // Obtener contenedor 
         var divWU = document.getElementById('pesos-umbrales-container');
 
         // Procesar y mostrar pesos
         var pesosHTML = '';
-        for (var i = 0; i < pesos_inicializados.length; i++) {
-            pesosHTML += '<div>Peso ' + (i+1) + ': ' + pesos_inicializados[i] + '</div>;'
+
+        for (var layerName in pesos_inicializados) {
+            pesosHTML += '<h3>Capa ' + layerName + '</h3>';
+            var pesosLayer = pesos_inicializados[layerName];
+        
+            // Mostrar pesos de la capa
+            pesosHTML += '<div>';
+            for (var neuronIndex in pesosLayer) {
+              var pesosNeuron = pesosLayer[neuronIndex];
+              pesosHTML += '<div>Neurona ' + (parseInt(neuronIndex) + 1) + ': ';
+              for (var i = 0; i < pesosNeuron.length; i++) {
+                pesosHTML += pesosNeuron[i] + ', ';
+              }
+              pesosHTML += '</div>';
+            }
+            pesosHTML += '</div>';
         }
+        
+        // Mensaje de éxito
+        pesosHTML += '<div class="success-message">PESOS Y UMBRALES GENERADOS CORRECTAMENTE</div>';
         divWU.innerHTML = pesosHTML;
     }
 }
