@@ -6,6 +6,7 @@ const training = {
             const modelData = model.obtenerDatos(banco_datos)
             if (modelData){
                 // Guardar datos en Local Storage
+                console.log(modelData);
                 localStorage.setItem('modelData', JSON.stringify(modelData));
                 localStorage.setItem('bancoDatos', JSON.stringify(banco_datos));
 
@@ -43,9 +44,9 @@ const training = {
 
     renderizarVistaEntrenamiento: function(){
         document.getElementById('btn-renderizar-vista-training').addEventListener('click', () => {
-            axios.get('/start-training').then(response => {
+            axios.get('/training').then(response => {
                 // Redirige al usuario a la pagina de entrenamiento
-                window.location.href = '/start-training';
+                window.location.href = '/training';
             })
             .catch(error => {
                 console.error('Error al renderizar la vista', error);

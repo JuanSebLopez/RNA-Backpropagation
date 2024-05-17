@@ -68,14 +68,23 @@
         <div id="contenedorGraficaRed">
             <div id="graficaEntrenamiento">
                 <h3>Grafica del Entrenamiento</h3>
+                <canvas id="trainingChart"></canvas>
             </div>
             <div id="btnsGrafica">
                 <button id="btn-start-training">Iniciar Entrenamiento</button>
                 <button id="btn-reset">Reset</button>
+                <button id="btn-download" style="display: none;">Descargar Pesos y Umbrales</button>
+                <button id="btn-simulate" style="display: none;">Simular Red</button>
             </div>
         </div>
     </div>
+    <!-- Incluir Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Incluir Socket.IO -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <!-- Incluir Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Incluir el script de entrenamiento -->
     <script src="/static/scripts/train-net.js" type="module"></script>
 </body>
 </html>

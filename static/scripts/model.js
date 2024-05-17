@@ -81,11 +81,15 @@ const model = {
         const numSalidas = banco_datos.salidas.length;
         const numCapas = document.getElementById('rs-range-line').value;
         const numNeuronasArr = this.obtenerNeuronasPorCapa();
+        const funcionesActivacion = this.obtenerFuncionesActivacion(numCapas);
         const modelData = {
             numCapas: numCapas,
             numEntradas: numEntradas,
             numSalidas: numSalidas,
-            numNeuronas: numNeuronasArr
+            numNeuronas: numNeuronasArr,
+            funcionesActivacion: funcionesActivacion,
+            funcionesActivacionSalida: document.getElementById('selectbox-salidaFA').value,
+            algoritmo: document.getElementById('selectbox-algoritmo').value
         }
         return modelData;
     },
@@ -103,6 +107,18 @@ const model = {
             }
         }
         return neuronasPorCapa;
+    },
+
+    obtenerFuncionesActivacion: function(numCapas) {
+        let funcionesActivacion = [];
+        const selectElements = document.querySelectorAll('.activation-function-select');
+        for (let i = 0; i < numCapas; i++) {
+            const selectElement = selectElements[i];
+            if (selectElement.parentElement.style.display !== 'none') {
+                funcionesActivacion.push(selectElement.value);
+            }
+        }
+        return funcionesActivacion;
     },
 
     modificarBtnsRed: function(){
