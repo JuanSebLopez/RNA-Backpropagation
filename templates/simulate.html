@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación Red Neuronal</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/model.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Simulación de la Red Neuronal</h1>
+        <div id="simulacionRed">
+            <div class="grupo-carga-parametros">
+                <input type="file" id="archivoJSON" name="file" style="display: none;" accept="application/json">
+                <label for="archivoJSON" id="btnCargarParametros">Cargar Archivo para Simulacion</label>
+                <button type="submit" id="btn-upload">Subir Archivo</button>
+                <div id="resultadosSimulacion"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/scripts/simulate-net.js" type="module"></script>
+</body>
+</html>
