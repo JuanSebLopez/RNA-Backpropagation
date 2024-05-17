@@ -56,13 +56,13 @@ def initialize_weights_thresholds(model_data):
         pesos_inicializados[f'WC{i-1}C{i}'] = tf.random.truncated_normal(
             shape=(num_neuronas[i-1], num_neuronas[i]), stddev=0.1
         )
-        umbrales_inicializados[f'u{i}'] = tf.zeros(shape=(num_neuronas[i],))
+        umbrales_inicializados[f'u{i+1}'] = tf.zeros(shape=(num_neuronas[i],))
 
     # Capa salida
     pesos_inicializados[f'WCS'] = tf.random.truncated_normal(
             shape=(num_neuronas[-1], num_salidas), stddev=0.1
         )
-    umbrales_inicializados['uS'] = tf.zeros(shape=(num_salidas),)
+    umbrales_inicializados['uS'] = tf.zeros(shape=(num_salidas,))
 
     pesos_inicializados, umbrales_inicializados = convert_data(pesos_inicializados, umbrales_inicializados)
 
@@ -77,17 +77,13 @@ def parameterize_data(model_data):
     return num_capas, num_entradas, num_salidas, num_neuronas
 
 def convert_data(pesos_inicializados, umbrales_inicializados):
-    pesos_numpy = {}
-    umbrales_numpy = {}
-    pesos_list = {}
-    umbrales_list = {}
+    pesos_list = []
+    umbrales_list = []
 
     for key, tensor in pesos_inicializados.items():
-        pesos_numpy[key] = tensor.numpy()
-        pesos_list[key] = pesos_numpy[key].tolist()
+        pesos_list.append({'nombre': key, 'valor': tensor.numpy().tolist()})
 
     for key, tensor in umbrales_inicializados.items():
-        umbrales_numpy[key] = tensor.numpy()
-        umbrales_list[key] = umbrales_numpy[key].tolist()
+        umbrales_list.append({'nombre': key, 'valor': tensor.numpy().tolist()})
 
     return pesos_list, umbrales_list
