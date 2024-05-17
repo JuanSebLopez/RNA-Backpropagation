@@ -5,6 +5,8 @@
     align-items: center;
     text-align: center;
     font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .container-configRed {
@@ -181,7 +183,7 @@
     margin-left: 10px;
 }
 
-.container-sliderNeuronas {
+.container-sliderNeuronas, .container-slidersEntr {
     display: flex;
     justify-content: center;
     align-items: center;

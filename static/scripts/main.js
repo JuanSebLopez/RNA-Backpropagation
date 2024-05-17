@@ -1,6 +1,6 @@
 import config from './config.js';
 import model from './model.js';
-import training  from './training.js';
+import training  from './training_render.js';
 
 document.getElementById('archivoJSON').addEventListener('change', function(event) {
     var submitBtn = document.getElementById('submitBtn');
@@ -56,6 +56,9 @@ function configurarRedNeuronal(banco_datos, columnas){
 
     // Inicializar Pesos y Umbrales
     training.iniciarPesosUmbrales(banco_datos);
+
+    // Registrar evento para iniciar entrenamiento
+    training.renderizarVistaEntrenamiento();
 }
 
 function mostrarTabla(banco_datos, columnas) {
@@ -112,6 +115,12 @@ function crearBtn (contenedorModeloRed){
     cambiarArchivoBtn.id = 'btn-reset';
     btnSection.appendChild(cambiarArchivoBtn);
 
+    var btnIniciarEntrenamiento = document.createElement('button');
+    btnIniciarEntrenamiento.textContent = 'Iniciar Entrenamiento';
+    btnIniciarEntrenamiento.id = 'btn-renderizar-vista-training';
+    btnIniciarEntrenamiento.style.display = 'none';
+    btnSection.appendChild(btnIniciarEntrenamiento);
+
     var btnPeUmb = document.createElement('button');
     btnPeUmb.textContent = 'Generar Pesos y Umbrales';
     btnPeUmb.id = 'btn-pesos-umbrales';
@@ -127,6 +136,9 @@ function crearDivModelo(){
 
     var divInicializar = document.createElement('div');
     divInicializar.id = 'pesos-umbrales-container';
+
+    var msgWU = '<h3 id="msgWU"></h3>';
+    divInicializar.innerHTML = msgWU;
 
     return [divModelo, divInicializar];
 }

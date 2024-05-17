@@ -1,0 +1,22 @@
+#graficaEntrenamiento {
+    text-align: center;
+}
+
+.rs-label {
+    font-size: 100%;
+}
+#rs-bullet-iter {
+    border: transparent;
+    top: 10px;
+    transform: translateX(-2px);
+}
+
+.range-slider {
+    position: relative;
+    width: 100%;
+}
+
+.containerSlider {
+    margin-left: 10px;
+    margin-right: 10px;
+}

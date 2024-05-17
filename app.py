@@ -53,5 +53,9 @@ def generate_weight_thresholds():
     }
     return jsonify(respuesta)
 
+@app.route('/start-training', methods=['GET'])
+def start_training():
+    return render_template('training.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

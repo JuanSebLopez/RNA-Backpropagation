@@ -100,10 +100,11 @@ button:hover {
     cursor: pointer;
 }
 
-#contenedorModeloRed {
+#contenedorModeloRed, #contenedorEntrenamientoRed, #contenedorGraficaRed  {
     background-color: #4f4f4f;
     padding: 15px;
     border-radius: 5px;
+    border: rgba(0, 0, 0, 0.466) solid;
     margin-bottom: 20px;
 }
 
