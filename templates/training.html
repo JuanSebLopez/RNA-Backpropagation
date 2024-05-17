@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenamiento Red Neuronal</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/model.css">
+    <link rel="stylesheet" href="/static/css/training.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div>
+            <h1>Entrenamiento de RNA Multicapa con Algoritmo Backpropagation</h1>
+            <div class="seccion-informacion">
+                <h2>Descripción</h2>
+                <p>Esta página web permite visualizar el proceso de entrenamiento de una red neuronal artificial (RNA) utilizando el algoritmo de retropropagación (Backpropagation).</p>
+                
+                <p>Aquí podrás observar cómo la red aprende a partir de datos de entrada y ajusta sus parámetros para obtener una salida precisa.</p>
+            </div>
+        </div>
+        <div class="seccion-visualizacion">
+            <h2>Parametros de entrenamiento</h2>
+            <div class="seccion-informacion">
+                <p>Configure los parametros de entrada para empezar el entrenamiento de la Red Neuronal</p>
+            </div>
+        </div>
+        <div class="" id="contenedorEntrenamientoRed">
+            <div class="container-slidersEntr">
+                <!--Izquierda-->
+                <div class="containerSlider">
+                    <h3>Numero de Iteraciones</h3>
+                    <div class="range-slider">
+                        <span class="rs-label" id="rs-bullet-iter">1</span>
+                        <input type="range" step="99" min="1" value="1" max="10000" id="rs-range-iter" class="rs-range">
+                    </div>
+                    <div class="box-minmax">
+                        <span>1</span>
+                        <span>10,000</span>
+                    </div>
+                </div>
+                <!--Mitad-->
+                <div class="containerSlider">
+                    <h3>Máximo Error Permitido</h3>
+                    <div class="range-slider">
+                        <span class="rs-label" id="rs-bullet-error">0.01</span>
+                        <input type="range" value="0.01" step="0.01" min="0.01" max="0.99" id="rs-range-error" class="rs-range">
+                    </div>
+                    <div class="box-minmax">
+                        <span>0.01</span>
+                        <span>1</span>
+                    </div>
+                </div>
+                <!--Derecha-->
+                <div class="containerSlider">
+                    <h3>Tasa de Aprendizaje</h3>
+                    <div class="range-slider">
+                        <span class="rs-label" id="rs-bullet-tasa">0.01</span>
+                        <input type="range" value="0.01" step="0.01" min="0.01" max="0.99" id="rs-range-tasa" class="rs-range">
+                    </div>
+                    <div class="box-minmax">
+                        <span>0.01</span>
+                        <span>1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contenedorGraficaRed">
+            <div id="graficaEntrenamiento">
+                <h3>Grafica del Entrenamiento</h3>
+            </div>
+            <div id="btnsGrafica">
+                <button id="btn-start-training">Iniciar Entrenamiento</button>
+                <button id="btn-reset">Reset</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/scripts/train-net.js" type="module"></script>
+</body>
+</html>

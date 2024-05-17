@@ -1,0 +1,28 @@
+.selectbox select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remove default select appearance */
+    background-color: #fff;
+  
+    /* Customize arrow icon */
+    &::-ms-expand {
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+    }
+  
+    &::-ms-value {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      color: #333;
+    }
+  
+    &:focus {
+      outline: none;
+      border-color: #999;
+    }
+  }
