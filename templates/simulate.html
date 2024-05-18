@@ -15,11 +15,16 @@
                 <input type="file" id="archivoJSON" name="file" style="display: none;" accept="application/json">
                 <label for="archivoJSON" id="btnCargarParametros">Cargar Archivo para Simulacion</label>
                 <button type="submit" id="btn-upload">Subir Archivo</button>
-                <div id="resultadosSimulacion"></div>
+            </div>
+            <div id="resultadosSimulacion"></div>
+            <div id="graficaEntrenamiento">
+                <h3>Grafica del Entrenamiento</h3>
+                <canvas id="simulationChart"></canvas>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/static/scripts/simulate-net.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

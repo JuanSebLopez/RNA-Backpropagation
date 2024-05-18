@@ -90,14 +90,17 @@ def upload_simulation_data():
     # Realizar predicciones
     predicciones = model.predict(entradas).tolist()
 
+    # Redondear valores de las salidas
+    def round_list(lst, decimals=2):
+        return [round(val, decimals) for val in lst]
+
     # Comparar salidas predichas con salidas esperadas
     comparacion = []
     for i in range(len(predicciones)):
         comparacion.append({
-            'salida_esperada': salidas_esperadas[i].tolist(),
-            'salida_predicha': predicciones[i]
+            'salida_esperada': round_list(salidas_esperadas[i].tolist()),
+            'salida_predicha': round_list(predicciones[i])
         })
-    print('Comparacion:', comparacion)  # Depuración
     return jsonify({'comparacion': comparacion})
 
 def load_model():
